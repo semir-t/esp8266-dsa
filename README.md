@@ -56,3 +56,6 @@ make all
 make flash
 ```
 11. To see if “hello_world” application is indeed running, type ```make monitor```. Several lines below, after start up and diagnostic log, you should see “SDK version: xxxxxxx” printed out by the application.
+
+# References
+[1] https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/api-reference/index.html
