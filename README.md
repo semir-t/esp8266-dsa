@@ -1,5 +1,5 @@
 # DSA
-Learning material and examples for course AR207 at FE Tuzla
+Learning material and examples for course AR305 at FE Tuzla
 # Software requirements
 To succesfully compile the firmware for the ESP8266 SOC we are going to use:
 1. Ubuntu 18.04 OS
