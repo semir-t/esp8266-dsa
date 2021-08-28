@@ -1,11 +1,10 @@
-
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/uart.h"
-#include "print.h"
+#include "debug.h"
 
 
-void initPRINT(uint32_t baudrate)
+void initDEBUG(uint32_t baudrate)
 {
 	uart_config_t uart_config =
 	{
@@ -19,12 +18,12 @@ void initPRINT(uint32_t baudrate)
 	uart_driver_install(UART_NUM_0, BUF_SIZE * 2, 0, 0, NULL, 0);
 }
 
-void putcharPRINT(uint8_t data)
-{/// print one character to PRINT
+void putcharDEBUG(uint8_t data)
+{/// print one character to DEBUG
 	uart_write_bytes(UART_NUM_0,(const char*) &data, 1);
 }
 
-void printPRINT(char *str, ... )
+void printDEBUG(char *str, ... )
 { /// print text and up to 10 arguments!
     uint8_t rstr[40];													// 33 max -> 32 ASCII for 32 bits and NULL 
     uint16_t k = 0;
@@ -103,14 +102,14 @@ void printPRINT(char *str, ... )
 					case('c'):
 					{// character
 						char tchar = va_arg(vl, int);	
-						putcharPRINT(tchar);
+						putcharDEBUG(tchar);
 						arg_type = (PRINT_ARG_TYPE_CHARACTER);
 						break;
 					}
 					case('s'):
 					{// string 
 						p_char = va_arg(vl, char *);	
-						sprintPRINT((uint8_t *)p_char);
+						sprintDEBUG((uint8_t *)p_char);
 						arg_type = (PRINT_ARG_TYPE_STRING);
 						break;
 					}
@@ -176,16 +175,16 @@ void printPRINT(char *str, ... )
 				if(arg_type&(PRINT_ARG_TYPE_MASK_CHAR_STRING))	
 				{
 					getStr4NumMISC(arg_type, p_uint32, rstr);
-					sprintPRINT(rstr);	
+					sprintDEBUG(rstr);	
 				}
 				k++;
 			}
 		}
 		else
 		{// not a '%' char -> print the char
-			putcharPRINT(str[k]);
+			putcharDEBUG(str[k]);
 			if (str[k] == '\n')
-				putcharPRINT('\r');
+				putcharDEBUG('\r');
 		}
 		k++;
 	}
@@ -194,15 +193,15 @@ void printPRINT(char *str, ... )
 	return;
 }
 
-void sprintPRINT(uint8_t * str)
+void sprintDEBUG(uint8_t * str)
 {
 	uint16_t k = 0;
 	
 	while (str[k] != '\0')
     {
-        putcharPRINT(str[k]);
+        putcharDEBUG(str[k]);
         if (str[k] == '\n')
-            putcharPRINT('\r');
+            putcharDEBUG('\r');
         k++;
 
         if (k == MAX_PRINT_STRING_SIZE)

@@ -19,7 +19,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#include "print.h"
+#include "debug.h"
 
 /**
  * This is an example which echos any data it receives on UART0 back to the sender,
@@ -36,7 +36,7 @@
 static void echo_task()
 {
 
-    initPRINT(115200);
+    initDEBUG(115200);
 
 	volatile uint32_t k = 0;
     while (1) {
@@ -46,7 +46,7 @@ static void echo_task()
 		{
 
 		}
-        printPRINT("Hello world\n");
+        printDEBUG("Hello world\n");
     }
 }
 
