@@ -1,0 +1,1 @@
+ESP8266 implements software PWM. This means that we can have PWM output on every pin. Downside is that, because this is a software implementation of the PWM, we can get data delay and flickering during high WiFi activity.

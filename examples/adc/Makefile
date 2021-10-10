@@ -3,10 +3,7 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := uart_echo
+PROJECT_NAME := user_main
 
 include $(IDF_PATH)/make/project.mk
-
-clean:
-	rm -r ./build
 

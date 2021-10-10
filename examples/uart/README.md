@@ -1,33 +1,20 @@
-# _UART Echo Example_
+# _GPIO Example_
 
-_This is an example which echoes any data it receives on UART0 back to the sender._
+_This test code shows how to configure gpio and how to use gpio interrupt._
+
+## GPIO functions
+
+ * GPIO15: output
+ * GPIO16: output
+ * GPIO4:  input, pulled up, interrupt from rising edge and falling edge
+ * GPIO5:  input, pulled up, interrupt from rising edge.  
 
 ## How to use example
 
 ### Hardware Required
 
-1. Connect an external serial interface to an ESP8266 board. The external interface should have 3.3V outputs. You may use e.g. 3.3V compatible USB-to-serial dongle:  
-
-  | ESP8266 Interface | #define | ESP8266 Pin | External UART Pin |  
-  | --- | --- | --- | --- |  
-  | Transmit Data (TxD) | ECHO_TEST_TXD | GPIO26 | RxD |  
-  | Receive Data (RxD) | ECHO_TEST_RXD | GPIO25 | TxD |  
-  | Ground | n/a | GND | GND |  
-
-2. Verify if echo indeed comes from ESP8266 by disconnecting either 'TxD' or 'RxD' pin. There should be no any echo once any pin is disconnected.
-
-* Using a hardware flow control
-
-  This is an optional check to verify if the hardware flow control works. To set it up you need an external serial interface that has RTS and CTS signals. 
-
-  1. Connect the extra RTS/CTS signals as below  
-
-      | ESP8266 Interface | #define | ESP8266 Pin | External UART Pin |  
-      | --- | --- | --- | --- |  
-      | Request to Send (RTS) | ECHO_TEST_RTS | GPIO13 | CTS |  
-      | Clear to Send (CTS) | ECHO_TEST_CTS | GPIO12 | RTS |  
-  
-  2. Configure UART0 driver to use the hardware flow control by setting `.flow_ctrl = UART_HW_FLOWCTRL_CTS_RTS` and adding `.rx_flow_ctrl_thresh = 122`
+ * Connect GPIO15 with GPIO4
+ * Connect GPIO16 with GPIO5
 
 ### Configure the project
 
@@ -35,8 +22,7 @@ _This is an example which echoes any data it receives on UART0 back to the sende
 make menuconfig
 ```
 
-* Set serial port under Serial Flasher Options.  
-* `make monitor` baud rate set to what you set in the example.
+* Set serial port under Serial Flasher Options.
 
 
 ### Build and Flash
@@ -53,9 +39,42 @@ See the Getting Started Guide for full steps to configure and use ESP-IDF to bui
 
 ## Example Output  
 
+ * Generate pulses on GPIO15/16, that triggers interrupt on GPIO4/5
+
 ```
-I (180) boot: Loaded app from partition at offset 0x10000
-I (0) system_api: Base MAC address is not set, read default base MAC address from BLK0 of EFUSE
-I (0) system_api: Base MAC address is not set, read default base MAC address from BLK0 of EFUSE
-0123456789
+I (0) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0
+I (0) gpio: GPIO[16]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0
+I (0) gpio: GPIO[4]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:1
+I (0) gpio: GPIO[5]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:1
+I (0) main: cnt: 0
+
+I (1) main: cnt: 1
+
+I (1) main: GPIO[4] intr, val: 1
+
+I (1) main: GPIO[5] intr, val: 1
+
+I (2) main: cnt: 2
+
+I (2) main: GPIO[4] intr, val: 0
+
+I (3) main: cnt: 3
+
+I (3) main: GPIO[4] intr, val: 1
+
+I (3) main: GPIO[5] intr, val: 1
+
+I (4) main: cnt: 4
+
+I (4) main: GPIO[4] intr, val: 0
+
+I (5) main: cnt: 5
+
+I (5) main: GPIO[4] intr, val: 1
+
+I (5) main: GPIO[5] intr, val: 1
+
+I (6) main: cnt: 6
+
+I (6) main: GPIO[4] intr, val: 0
 ```
