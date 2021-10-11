@@ -5,7 +5,7 @@ To succesfully compile the firmware for the ESP8266 SOC we are going to use:
 1. Ubuntu 18.04 OS
 2. Makefile approach
 
-In one of the below sections we will explain how to setup the toolchain on the Ubuntu 18.04 OS. You could use Win OS but it will require a little bit reading on your side. 
+In one of the below sections we will explain how to setup the toolchain on the Ubuntu 18.04 OS. You could use Win OS but it will require a little bit reading on your side.
 # Hardware requirements
 For this course we will need following components:
 - Node MCU Board (https://www.ebay.com/itm/313601387191?hash=item4904196ab7:g:KVoAAOSwBYpduobE) or any other ESP8266 based board.
@@ -48,7 +48,7 @@ make menuconfig
 ```
 9. In the menu, navigate to ```Serial flasher config``` > ```Default serial port``` to configure the serial port, where project will be loaded to. Confirm selection by pressing enter, save configuration by selecting < Save > and then exit application by selecting < Exit >.
 
->Note: 
+>Note:
   On Windows, serial ports have names like COM1. On MacOS, they start with /dev/cu.. On Linux, they start with /dev/tty.
 10. Compile and flash hello-world example
 ```
@@ -58,6 +58,7 @@ make flash
 11. To see if “hello_world” application is indeed running, type ```make monitor```. Several lines below, after start up and diagnostic log, you should see “SDK version: xxxxxxx” printed out by the application.
 
 # References
-[2] http://beej.us/guide/bgnet/html/
+[1] http://beej.us/guide/bgnet/html/
+
 [2] https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/api-reference/index.html
 
