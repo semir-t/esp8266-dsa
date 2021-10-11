@@ -1,0 +1,39 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = $/;"	m
+CMD_FILENAME	cli.h	25;"	d
+CMD_NAME	cli.h	24;"	d
+Command	cli.h	/^} Command;$/;"	t	typeref:struct:__anon1
+HEADERS	Makefile	/^HEADERS = $(SRC:.c=.h) $/;"	m
+LOCAL_SOURCE	Makefile	/^LOCAL_SOURCE = cli.c$/;"	m
+MAIN	Makefile	/^MAIN = main.c$/;"	m
+MAX_ARGS	cli.h	19;"	d
+NET_CLIENT	cli.h	28;"	d
+NET_SERVER	cli.h	27;"	d
+NUMBER_OF_COMMANDS	cli.h	18;"	d
+OBJ	Makefile	/^OBJ = $(SRC:.c=.o) $/;"	m
+PROGRAM	Makefile	/^PROGRAM = client$/;"	m
+SERVER_PORT	main.c	20;"	d	file:
+SET_ARGC_ERROR	cli.h	30;"	d
+SET_ARGV_ERROR	cli.h	31;"	d
+SRC	Makefile	/^SRC = $(TARGET).c$/;"	m
+TARGET	Makefile	/^TARGET = $(strip $(basename $(MAIN)))$/;"	m
+_CLI_H	cli.h	2;"	d
+_execute_command	cli.h	/^  void (*_execute_command)(uint8_t argc, uint8_t *argv[],int client_sock);$/;"	m	struct:__anon1
+_name	cli.h	/^  char * _name;$/;"	m	struct:__anon1
+cli_get	cli.c	/^void cli_get(uint8_t argc, uint8_t * argv[],int client_sock)\/*{{{*\/$/;"	f
+cli_init	cli.c	/^void cli_init(uint8_t type)\/*{{{*\/$/;"	f
+cli_put	cli.c	/^void cli_put(uint8_t argc, uint8_t * argv[],int client_sock)\/*{{{*\/$/;"	f
+commands	cli.c	/^static Command commands[NUMBER_OF_COMMANDS] =$/;"	v	file:
+g_network_node_type	cli.c	/^uint8_t g_network_node_type = NET_CLIENT;$/;"	v
+main	main.c	/^int main(int argc , char *argv[])$/;"	f
+receive_file	cli.c	/^void receive_file(int client_sock,char * file_name)\/*{{{*\/$/;"	f
+run_command	cli.c	/^void run_command(int client_sock,uint8_t * cmd) \/*{{{*\/$/;"	f
+send_file	cli.c	/^void send_file(int client_sock,char * file_name)\/*{{{*\/$/;"	f
+str_to_int	cli.c	/^uint32_t str_to_int(uint8_t * str)\/*{{{*\/ \/\/only positive numbers$/;"	f
+string_compare	cli.c	/^int8_t string_compare(uint8_t * lhs, uint8_t * rhs)\/*{{{*\/$/;"	f
