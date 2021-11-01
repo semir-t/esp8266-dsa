@@ -15,15 +15,19 @@
 
 #include "debug.h"
 #include "wifi.h"
+#include "http.h"
 
-#define EXAMPLE_ESP_WIFI_SSID      "HONOR"
-#define EXAMPLE_ESP_WIFI_PASS      "135792468"
+#define WIFI_SSID      "HONOR"
+#define WIFI_PASS      "135792468"
 
 void app_main()
 {
-    initDEBUG("", '5', 921600, "DSA - Debug example");
-    ESP_ERROR_CHECK(nvs_flash_init());
+    esp_err_t ret = nvs_flash_init();
 
-    initWIFI("HONOR","135792468");
+    initDEBUG("", '5', 921600, "DSA - Debug example");
+    initWIFI(WIFI_SSID,WIFI_PASS);
+
+    xTaskCreate(&http_test_task, "http_test_task", 8192, NULL, 5, NULL);
 }
+
 

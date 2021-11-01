@@ -10,6 +10,7 @@ typedef enum
 {
 	DSYS = 0x0000,
 	DWIFI,
+	DHTTP,
 	
 	DSIZE,
 
