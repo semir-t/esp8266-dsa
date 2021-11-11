@@ -1,7 +1,5 @@
 #include "string.h"
-
 #include <sys/param.h>
-
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
@@ -12,12 +10,10 @@
 #include "protocol_examples_common.h"
 #include "nvs.h"
 #include "nvs_flash.h"
-
 #include <esp_http_server.h>
-
-
 #include "esp_wifi.h"
 #include "esp_event_loop.h"
+#include "driver/gpio.h"
 
 #include "debug.h"
 
@@ -40,173 +36,141 @@
 #define SOFT_AP_NM_ADDRESS_4 0
 
 #define SERVER_PORT 80 
-#define HTTP_METHOD HTTP_POST
-#define URI_STRING "/test"
+
+#define GPIO_LED										16
 
 static httpd_handle_t server = NULL;
 
 /* An HTTP GET handler */
-esp_err_t hello_get_handler(httpd_req_t *req)
+esp_err_t home_get_handler(httpd_req_t *req)
 {
     char*  buf;
     size_t buf_len;
 
-    /* Get header value string length and allocate memory for length + 1,
-     * extra byte for null termination */
-    buf_len = httpd_req_get_hdr_value_len(req, "Host") + 1;
-    if (buf_len > 1) {
-        buf = malloc(buf_len);
-        /* Copy null terminated value string into buffer */
-        if (httpd_req_get_hdr_value_str(req, "Host", buf, buf_len) == ESP_OK) {
-            printDEBUG(DSYS, "Found header => Host: %s", buf);
-        }
-        free(buf);
-    }
 
-    buf_len = httpd_req_get_hdr_value_len(req, "Test-Header-2") + 1;
-    if (buf_len > 1) {
-        buf = malloc(buf_len);
-        if (httpd_req_get_hdr_value_str(req, "Test-Header-2", buf, buf_len) == ESP_OK) {
-            printDEBUG(DSYS, "Found header => Test-Header-2: %s", buf);
-        }
-        free(buf);
-    }
+    char resp[512];
+    snprintf(resp, sizeof(resp),req->user_ctx,
+            req->uri,
+            xTaskGetTickCount() * portTICK_PERIOD_MS / 1000);
+    httpd_resp_send(req, resp, strlen(resp));
 
-    buf_len = httpd_req_get_hdr_value_len(req, "Test-Header-1") + 1;
-    if (buf_len > 1) {
-        buf = malloc(buf_len);
-        if (httpd_req_get_hdr_value_str(req, "Test-Header-1", buf, buf_len) == ESP_OK) {
-            printDEBUG(DSYS, "Found header => Test-Header-1: %s", buf);
-        }
-        free(buf);
-    }
-
-    /* Read URL query string length and allocate memory for length + 1,
-     * extra byte for null termination */
-    buf_len = httpd_req_get_url_query_len(req) + 1;
-    if (buf_len > 1) {
-        buf = malloc(buf_len);
-        if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
-            printDEBUG(DSYS, "Found URL query => %s", buf);
-            char param[32];
-            /* Get value of expected key from query string */
-            if (httpd_query_key_value(buf, "query1", param, sizeof(param)) == ESP_OK) {
-                printDEBUG(DSYS, "Found URL query parameter => query1=%s", param);
-            }
-            if (httpd_query_key_value(buf, "query3", param, sizeof(param)) == ESP_OK) {
-                printDEBUG(DSYS, "Found URL query parameter => query3=%s", param);
-            }
-            if (httpd_query_key_value(buf, "query2", param, sizeof(param)) == ESP_OK) {
-                printDEBUG(DSYS, "Found URL query parameter => query2=%s", param);
-            }
-        }
-        free(buf);
-    }
-
-    /* Set some custom headers */
-    httpd_resp_set_hdr(req, "Custom-Header-1", "Custom-Value-1");
-    httpd_resp_set_hdr(req, "Custom-Header-2", "Custom-Value-2");
-
-    /* Send response with custom headers and body set as the
-     * string passed in user context*/
-    const char* resp_str = (const char*) req->user_ctx;
-    httpd_resp_send(req, resp_str, strlen(resp_str));
-
-    /* After sending the HTTP response the old HTTP request
-     * headers are lost. Check if HTTP request headers can be read now. */
-    if (httpd_req_get_hdr_value_len(req, "Host") == 0) {
-        printDEBUG(DSYS, "Request headers lost");
-    }
     return ESP_OK;
 }
 
-httpd_uri_t hello = {
-    .uri       = "/hello",
+httpd_uri_t home = {
+    .uri       = "/",
     .method    = HTTP_GET,
-    .handler   = hello_get_handler,
+    .handler   = home_get_handler,
     /* Let's pass response string in user
      * context to demonstrate it's usage */
-    .user_ctx  = "Hello World!"
+    .user_ctx  = {
+        "HTTP/1.1 200 OK\r\n"
+            "Content-type: text/html\r\n\r\n"
+            "<html><head><title>HTTP Server</title>"
+            "<style> div.main {"
+            "font-family: Arial;"
+            "padding: 0.01em 16px;"
+            "box-shadow: 2px 2px 1px 1px #d2d2d2;"
+            "background-color: #f1f1f1;}"
+            "</style></head>"
+            "<body><div class='main'>"
+            "<h3>HTTP Server</h3>"
+            "<p>URL: %s</p>"
+            "<p>Uptime: %d seconds</p>"
+            "<button onclick=\"location.href='/on'\" type='button'>"
+            "LED On</button></p>"
+            "<button onclick=\"location.href='/off'\" type='button'>"
+            "LED Off</button></p>"
+            "</div></body></html>"
+    },
 };
 
 /* An HTTP POST handler */
-esp_err_t echo_post_handler(httpd_req_t *req)
+esp_err_t on_get_handler(httpd_req_t *req)
 {
-    char buf[100];
-    int ret, remaining = req->content_len;
+    char*  buf;
+    size_t buf_len;
 
-    while (remaining > 0) {
-        /* Read the data for the request */
-        if ((ret = httpd_req_recv(req, buf,
-                        MIN(remaining, sizeof(buf)))) <= 0) {
-            if (ret == HTTPD_SOCK_ERR_TIMEOUT) {
-                /* Retry receiving if timeout occurred */
-                continue;
-            }
-            return ESP_FAIL;
-        }
 
-        /* Send back the same data */
-        httpd_resp_send_chunk(req, buf, ret);
-        remaining -= ret;
+    gpio_set_level(GPIO_LED, 0);
+    char resp[512];
+    snprintf(resp, sizeof(resp),req->user_ctx,
+            req->uri,
+            xTaskGetTickCount() * portTICK_PERIOD_MS / 1000);
+    httpd_resp_send(req, resp, strlen(resp));
 
-        /* Log data received */
-        printDEBUG(DSYS, "=========== RECEIVED DATA ==========\n");
-        printDEBUG(DSYS, "%.*s\n", ret, buf);
-        printDEBUG(DSYS, "====================================\n");
-    }
-
-    // End response
-    httpd_resp_send_chunk(req, NULL, 0);
     return ESP_OK;
 }
 
-httpd_uri_t echo = {
-    .uri       = "/echo",
-    .method    = HTTP_POST,
-    .handler   = echo_post_handler,
-    .user_ctx  = NULL
+httpd_uri_t on = 
+{
+    .uri       = "/on",
+    .method    = HTTP_GET,
+    .handler   = on_get_handler,
+    .user_ctx  = {
+        "HTTP/1.1 200 OK\r\n"
+            "Content-type: text/html\r\n\r\n"
+            "<html><head><title>HTTP Server</title>"
+            "<style> div.main {"
+            "font-family: Arial;"
+            "padding: 0.01em 16px;"
+            "box-shadow: 2px 2px 1px 1px #d2d2d2;"
+            "background-color: #f1f1f1;}"
+            "</style></head>"
+            "<body><div class='main'>"
+            "<h3>HTTP Server</h3>"
+            "<p>URL: %s</p>"
+            "<p>Uptime: %d seconds</p>"
+            "<button onclick=\"location.href='/on'\" type='button'>"
+            "LED On</button></p>"
+            "<button onclick=\"location.href='/off'\" type='button'>"
+            "LED Off</button></p>"
+            "</div></body></html>"
+    }
 };
 
-/* An HTTP PUT handler. This demonstrates realtime
- * registration and deregistration of URI handlers
- */
-esp_err_t ctrl_put_handler(httpd_req_t *req)
+esp_err_t off_get_handler(httpd_req_t *req)
 {
-    char buf;
-    int ret;
+    char*  buf;
+    size_t buf_len;
 
-    if ((ret = httpd_req_recv(req, &buf, 1)) <= 0) {
-        if (ret == HTTPD_SOCK_ERR_TIMEOUT) {
-            httpd_resp_send_408(req);
-        }
-        return ESP_FAIL;
-    }
 
-    if (buf == '0') {
-        /* Handler can be unregistered using the uri string */
-        printDEBUG(DSYS, "Unregistering /hello and /echo URIs");
-        httpd_unregister_uri(req->handle, "/hello");
-        httpd_unregister_uri(req->handle, "/echo");
-    }
-    else {
-        printDEBUG(DSYS, "Registering /hello and /echo URIs");
-        httpd_register_uri_handler(req->handle, &hello);
-        httpd_register_uri_handler(req->handle, &echo);
-    }
+    gpio_set_level(GPIO_LED, 1);
+    char resp[512];
+    snprintf(resp, sizeof(resp),req->user_ctx,
+            req->uri,
+            xTaskGetTickCount() * portTICK_PERIOD_MS / 1000);
+    httpd_resp_send(req, resp, strlen(resp));
 
-    /* Respond with empty body */
-    httpd_resp_send(req, NULL, 0);
     return ESP_OK;
 }
 
-httpd_uri_t ctrl = 
-{
-    .uri       = "/ctrl",
-    .method    = HTTP_PUT,
-    .handler   = ctrl_put_handler,
-    .user_ctx  = NULL
+httpd_uri_t off = {
+    .uri       = "/off",
+    .method    = HTTP_GET,
+    .handler   = off_get_handler,
+    .user_ctx  = {
+        "HTTP/1.1 200 OK\r\n"
+            "Content-type: text/html\r\n\r\n"
+            "<html><head><title>HTTP Server</title>"
+            "<style> div.main {"
+            "font-family: Arial;"
+            "padding: 0.01em 16px;"
+            "box-shadow: 2px 2px 1px 1px #d2d2d2;"
+            "background-color: #f1f1f1;}"
+            "</style></head>"
+            "<body><div class='main'>"
+            "<h3>HTTP Server</h3>"
+            "<p>URL: %s</p>"
+            "<p>Uptime: %d seconds</p>"
+            "<button onclick=\"location.href='/on'\" type='button'>"
+            "LED On</button></p>"
+            "<button onclick=\"location.href='/off'\" type='button'>"
+            "LED Off</button></p>"
+            "</div></body></html>"
+    }
 };
+
 
 httpd_handle_t start_webserver(void)
 {
@@ -214,12 +178,13 @@ httpd_handle_t start_webserver(void)
 
     // Start the httpd server
     printDEBUG(DSYS, "Starting server on port: '%d'", config.server_port);
-    if (httpd_start(&server, &config) == ESP_OK) {
+    if (httpd_start(&server, &config) == ESP_OK)
+    {
         // Set URI handlers
         printDEBUG(DSYS, "Registering URI handlers");
-        httpd_register_uri_handler(server, &hello);
-        httpd_register_uri_handler(server, &echo);
-        httpd_register_uri_handler(server, &ctrl);
+        httpd_register_uri_handler(server, &home);
+        httpd_register_uri_handler(server, &on);
+        httpd_register_uri_handler(server, &off);
         return server;
     }
 
@@ -292,7 +257,8 @@ static void launchSoftAp()
     wifi_init_config_t wifiConfiguration = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&wifiConfiguration));
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
-    wifi_config_t apConfiguration = {
+    wifi_config_t apConfiguration =
+    {
         .ap = {
             .ssid = SOFT_AP_SSID,
             .password = SOFT_AP_PASSWORD,
@@ -311,10 +277,29 @@ static void launchSoftAp()
 
 void app_main(void)
 {
-    initDEBUG("", '5', 115200, "DSA - Debug example");
+    initDEBUG("", '5', 921600, "DSA - Debug example");
+
+    gpio_config_t io_conf;
+    //disable interrupt
+    io_conf.intr_type = GPIO_INTR_DISABLE;
+    //set as output mode
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    //bit mask of the pins that you want to set,e.g.GPIO15/16
+    io_conf.pin_bit_mask =  (1 << GPIO_LED);
+    //disable pull-down mode
+    io_conf.pull_down_en = 0;
+    //disable pull-up mode
+    io_conf.pull_up_en = 0;
+    //configure GPIO with the given settings
+    gpio_config(&io_conf);
+
+
     launchSoftAp();
     while(1) 
     {
         vTaskDelay(10);
     }
 }
+
+
+
