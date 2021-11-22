@@ -1,0 +1,365 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BUF_SIZE	debug.c	14;"	d	file:
+DAPPEND	debug.h	/^	DAPPEND = 0x0800,$/;"	e	enum:__anon2
+DDEBUG	debug.h	/^	DDEBUG = 0x2000,$/;"	e	enum:__anon2
+DDEBUGEXT	debug.h	/^	DDEBUGEXT = 0x1000,$/;"	e	enum:__anon2
+DEBUG_BLE_LOG_BUFFER_MASK	debug.h	37;"	d
+DEBUG_BLE_LOG_BUFFER_SIZE	debug.h	36;"	d
+DEBUG_Modules_t	debug.h	/^} DEBUG_Modules_t;$/;"	t	typeref:enum:__anon2
+DEBUG_WAIT4TC_COUNT	debug.h	34;"	d
+DERROR	debug.h	/^	DERROR = 0x2000,$/;"	e	enum:__anon2
+DEVICE_ID_REG_ADDR	debug.h	30;"	d
+DEVICE_ID_SIZE	debug.h	29;"	d
+DHEADER	debug.h	/^	DHEADER = 0x8000,$/;"	e	enum:__anon2
+DINTERNAL	debug.h	/^	DINTERNAL = 0x0400,$/;"	e	enum:__anon2
+DNOTIFY	debug.h	/^	DNOTIFY = 0x4000,$/;"	e	enum:__anon2
+DSIZE	debug.h	/^	DSIZE,$/;"	e	enum:__anon2
+DSYS	debug.h	/^	DSYS = 0x0000,$/;"	e	enum:__anon2
+DUSER	debug.h	/^	DUSER = 0x0001,$/;"	e	enum:__anon2
+DWARNING	debug.h	/^	DWARNING = 0x1000,$/;"	e	enum:__anon2
+LINUX_OS	debug.h	27;"	d
+MAX_PRINT_STRING_SIZE	misc.h	9;"	d
+MFRC522_AntennaOff	mfrc522.c	/^void MFRC522_AntennaOff(void) {$/;"	f
+MFRC522_AntennaOn	mfrc522.c	/^void MFRC522_AntennaOn(void) {$/;"	f
+MFRC522_Anticoll	mfrc522.c	/^MFRC522_Status_t MFRC522_Anticoll(uint8_t* serNum) {$/;"	f
+MFRC522_CalculateCRC	mfrc522.c	/^void MFRC522_CalculateCRC(uint8_t*  pIndata, uint8_t len, uint8_t* pOutData) {$/;"	f
+MFRC522_Check	mfrc522.c	/^MFRC522_Status_t MFRC522_Check(uint8_t* id)$/;"	f
+MFRC522_ClearBitMask	mfrc522.c	/^void MFRC522_ClearBitMask(uint8_t reg, uint8_t mask){$/;"	f
+MFRC522_DUMMY	mfrc522.h	137;"	d
+MFRC522_H	mfrc522.h	5;"	d
+MFRC522_Halt	mfrc522.c	/^void MFRC522_Halt(void) {$/;"	f
+MFRC522_Init	mfrc522.c	/^void MFRC522_Init(void)$/;"	f
+MFRC522_InitPins	mfrc522.c	/^void MFRC522_InitPins(void)$/;"	f
+MFRC522_MAX_LEN	mfrc522.h	139;"	d
+MFRC522_REG_ANALOG_TEST	mfrc522.h	128;"	d
+MFRC522_REG_AUTO_TEST	mfrc522.h	126;"	d
+MFRC522_REG_BIT_FRAMING	mfrc522.h	82;"	d
+MFRC522_REG_COLL	mfrc522.h	83;"	d
+MFRC522_REG_COMMAND	mfrc522.h	70;"	d
+MFRC522_REG_COMM_IE_N	mfrc522.h	71;"	d
+MFRC522_REG_COMM_IRQ	mfrc522.h	73;"	d
+MFRC522_REG_CONTROL	mfrc522.h	81;"	d
+MFRC522_REG_CRC_RESULT_L	mfrc522.h	105;"	d
+MFRC522_REG_CRC_RESULT_M	mfrc522.h	104;"	d
+MFRC522_REG_CWGS_PREG	mfrc522.h	111;"	d
+MFRC522_REG_DEMOD	mfrc522.h	95;"	d
+MFRC522_REG_DIV1_EN	mfrc522.h	72;"	d
+MFRC522_REG_DIV_IRQ	mfrc522.h	74;"	d
+MFRC522_REG_ERROR	mfrc522.h	75;"	d
+MFRC522_REG_FIFO_DATA	mfrc522.h	78;"	d
+MFRC522_REG_FIFO_LEVEL	mfrc522.h	79;"	d
+MFRC522_REG_GS_N	mfrc522.h	110;"	d
+MFRC522_REG_MIFARE	mfrc522.h	98;"	d
+MFRC522_REG_MODE	mfrc522.h	87;"	d
+MFRC522_REG_MOD_WIDTH	mfrc522.h	107;"	d
+MFRC522_REG_RESERVED00	mfrc522.h	69;"	d
+MFRC522_REG_RESERVED01	mfrc522.h	84;"	d
+MFRC522_REG_RESERVED10	mfrc522.h	86;"	d
+MFRC522_REG_RESERVED11	mfrc522.h	96;"	d
+MFRC522_REG_RESERVED12	mfrc522.h	97;"	d
+MFRC522_REG_RESERVED13	mfrc522.h	99;"	d
+MFRC522_REG_RESERVED14	mfrc522.h	100;"	d
+MFRC522_REG_RESERVED20	mfrc522.h	103;"	d
+MFRC522_REG_RESERVED21	mfrc522.h	106;"	d
+MFRC522_REG_RESERVED22	mfrc522.h	108;"	d
+MFRC522_REG_RESERVED30	mfrc522.h	120;"	d
+MFRC522_REG_RESERVED31	mfrc522.h	132;"	d
+MFRC522_REG_RESERVED32	mfrc522.h	133;"	d
+MFRC522_REG_RESERVED33	mfrc522.h	134;"	d
+MFRC522_REG_RESERVED34	mfrc522.h	135;"	d
+MFRC522_REG_RF_CFG	mfrc522.h	109;"	d
+MFRC522_REG_RX_MODE	mfrc522.h	89;"	d
+MFRC522_REG_RX_SELL	mfrc522.h	93;"	d
+MFRC522_REG_RX_THRESHOLD	mfrc522.h	94;"	d
+MFRC522_REG_SERIALSPEED	mfrc522.h	101;"	d
+MFRC522_REG_STATUS1	mfrc522.h	76;"	d
+MFRC522_REG_STATUS2	mfrc522.h	77;"	d
+MFRC522_REG_TEST_ADC0	mfrc522.h	131;"	d
+MFRC522_REG_TEST_ADC1	mfrc522.h	129;"	d
+MFRC522_REG_TEST_ADC2	mfrc522.h	130;"	d
+MFRC522_REG_TEST_BUS	mfrc522.h	125;"	d
+MFRC522_REG_TEST_PIN_EN	mfrc522.h	123;"	d
+MFRC522_REG_TEST_PIN_VALUE	mfrc522.h	124;"	d
+MFRC522_REG_TEST_SEL1	mfrc522.h	121;"	d
+MFRC522_REG_TEST_SEL2	mfrc522.h	122;"	d
+MFRC522_REG_TX_AUTO	mfrc522.h	91;"	d
+MFRC522_REG_TX_CONTROL	mfrc522.h	90;"	d
+MFRC522_REG_TX_MODE	mfrc522.h	88;"	d
+MFRC522_REG_TX_SELL	mfrc522.h	92;"	d
+MFRC522_REG_T_COUNTER_VALUE_H	mfrc522.h	117;"	d
+MFRC522_REG_T_COUNTER_VALUE_L	mfrc522.h	118;"	d
+MFRC522_REG_T_MODE	mfrc522.h	113;"	d
+MFRC522_REG_T_PRESCALER	mfrc522.h	114;"	d
+MFRC522_REG_T_RELOAD_H	mfrc522.h	115;"	d
+MFRC522_REG_T_RELOAD_L	mfrc522.h	116;"	d
+MFRC522_REG_VERSION	mfrc522.h	127;"	d
+MFRC522_REG_WATER_LEVEL	mfrc522.h	80;"	d
+MFRC522_REG__MODGS_PREG	mfrc522.h	112;"	d
+MFRC522_Read	mfrc522.c	/^MFRC522_Status_t MFRC522_Read(uint8_t blockAddr, uint8_t* recvData) {$/;"	f
+MFRC522_ReadRegister	mfrc522.c	/^uint8_t MFRC522_ReadRegister(uint8_t addr) {$/;"	f
+MFRC522_Request	mfrc522.c	/^MFRC522_Status_t MFRC522_Request(uint8_t reqMode, uint8_t *TagType) {$/;"	f
+MFRC522_Reset	mfrc522.c	/^void MFRC522_Reset() {$/;"	f
+MFRC522_SelectTag	mfrc522.c	/^uint8_t MFRC522_SelectTag(uint8_t* serNum) {$/;"	f
+MFRC522_SetBitMask	mfrc522.c	/^void MFRC522_SetBitMask(uint8_t reg, uint8_t mask) {$/;"	f
+MFRC522_Status_t	mfrc522.h	/^} MFRC522_Status_t;$/;"	t	typeref:enum:__anon1
+MFRC522_ToCard	mfrc522.c	/^MFRC522_Status_t MFRC522_ToCard(uint8_t command, uint8_t *sendData, uint8_t sendLen, uint8_t *backData, uint16_t *backLen) {$/;"	f
+MFRC522_WriteRegister	mfrc522.c	/^void MFRC522_WriteRegister(uint8_t addr, uint8_t val) {$/;"	f
+MISC_CopyStr	misc.c	/^void MISC_CopyStr(uint8_t * dst, uint8_t * src)$/;"	f
+MISC_LenStr	misc.c	/^uint16_t MISC_LenStr(uint8_t * str)$/;"	f
+MISC_STR_DO_NOT_MATCH	misc.h	29;"	d
+MISC_STR_LEN_DIFFERS	misc.h	28;"	d
+MISC_STR_MACTH	misc.h	30;"	d
+MI_ERR	mfrc522.h	/^	MI_ERR = 2$/;"	e	enum:__anon1
+MI_NOTAGERR	mfrc522.h	/^	MI_NOTAGERR = 1,$/;"	e	enum:__anon1
+MI_OK	mfrc522.h	/^	MI_OK = 0,$/;"	e	enum:__anon1
+PCD_AUTHENT	mfrc522.h	45;"	d
+PCD_CALCCRC	mfrc522.h	50;"	d
+PCD_IDLE	mfrc522.h	44;"	d
+PCD_RECEIVE	mfrc522.h	46;"	d
+PCD_RESETPHASE	mfrc522.h	49;"	d
+PCD_TRANSCEIVE	mfrc522.h	48;"	d
+PCD_TRANSMIT	mfrc522.h	47;"	d
+PICC_ANTICOLL	mfrc522.h	55;"	d
+PICC_AUTHENT1A	mfrc522.h	57;"	d
+PICC_AUTHENT1B	mfrc522.h	58;"	d
+PICC_DECREMENT	mfrc522.h	61;"	d
+PICC_HALT	mfrc522.h	65;"	d
+PICC_INCREMENT	mfrc522.h	62;"	d
+PICC_READ	mfrc522.h	59;"	d
+PICC_REQALL	mfrc522.h	54;"	d
+PICC_REQIDL	mfrc522.h	53;"	d
+PICC_RESTORE	mfrc522.h	63;"	d
+PICC_SElECTTAG	mfrc522.h	56;"	d
+PICC_TRANSFER	mfrc522.h	64;"	d
+PICC_WRITE	mfrc522.h	60;"	d
+PRINT_ARG_TYPE_BINARY_BYTE	misc.h	11;"	d
+PRINT_ARG_TYPE_BINARY_HALFWORD	misc.h	12;"	d
+PRINT_ARG_TYPE_BINARY_WORD	misc.h	13;"	d
+PRINT_ARG_TYPE_CHARACTER	misc.h	17;"	d
+PRINT_ARG_TYPE_DECIMAL_BYTE	misc.h	14;"	d
+PRINT_ARG_TYPE_DECIMAL_HALFWORD	misc.h	15;"	d
+PRINT_ARG_TYPE_DECIMAL_WORD	misc.h	16;"	d
+PRINT_ARG_TYPE_FLOAT	misc.h	19;"	d
+PRINT_ARG_TYPE_HEXADECIMAL_BYTE	misc.h	20;"	d
+PRINT_ARG_TYPE_HEXADECIMAL_HALFWORD	misc.h	21;"	d
+PRINT_ARG_TYPE_HEXADECIMAL_WORD	misc.h	22;"	d
+PRINT_ARG_TYPE_MASK_CHAR_STRING	misc.h	25;"	d
+PRINT_ARG_TYPE_STRING	misc.h	18;"	d
+PRINT_ARG_TYPE_UNKNOWN	misc.h	23;"	d
+REG_SPI_BASE	spi_register.h	28;"	d
+SLV_SPI_INT_EN	spi_register.h	154;"	d
+SLV_SPI_INT_EN_S	spi_register.h	155;"	d
+SPI_ADDR	spi_register.h	45;"	d
+SPI_CK_I_EDGE	spi_register.h	109;"	d
+SPI_CK_OUT_EDGE	spi_register.h	108;"	d
+SPI_CLKCNT_H	spi_register.h	85;"	d
+SPI_CLKCNT_H_S	spi_register.h	86;"	d
+SPI_CLKCNT_L	spi_register.h	87;"	d
+SPI_CLKCNT_L_S	spi_register.h	88;"	d
+SPI_CLKCNT_N	spi_register.h	83;"	d
+SPI_CLKCNT_N_S	spi_register.h	84;"	d
+SPI_CLKDIV_PRE	spi_register.h	81;"	d
+SPI_CLKDIV_PRE_S	spi_register.h	82;"	d
+SPI_CLK_EQU_SYSCLK	spi_register.h	80;"	d
+SPI_CLOCK	spi_register.h	79;"	d
+SPI_CMD	spi_register.h	29;"	d
+SPI_CS0_DIS	spi_register.h	136;"	d
+SPI_CS1_DIS	spi_register.h	135;"	d
+SPI_CS2_DIS	spi_register.h	134;"	d
+SPI_CS_DELAY_MODE	spi_register.h	69;"	d
+SPI_CS_DELAY_MODE_S	spi_register.h	70;"	d
+SPI_CS_DELAY_NUM	spi_register.h	67;"	d
+SPI_CS_DELAY_NUM_S	spi_register.h	68;"	d
+SPI_CS_HOLD	spi_register.h	111;"	d
+SPI_CS_HOLD_DELAY	spi_register.h	57;"	d
+SPI_CS_HOLD_DELAY_RES	spi_register.h	59;"	d
+SPI_CS_HOLD_DELAY_RES_S	spi_register.h	60;"	d
+SPI_CS_HOLD_DELAY_S	spi_register.h	58;"	d
+SPI_CS_SETUP	spi_register.h	110;"	d
+SPI_CTRL	spi_register.h	47;"	d
+SPI_CTRL1	spi_register.h	56;"	d
+SPI_CTRL2	spi_register.h	65;"	d
+SPI_DIO_MODE	spi_register.h	51;"	d
+SPI_DOUT_MODE	spi_register.h	53;"	d
+SPI_EXT2	spi_register.h	217;"	d
+SPI_EXT3	spi_register.h	219;"	d
+SPI_FASTRD_MODE	spi_register.h	54;"	d
+SPI_FLASH_BE	spi_register.h	39;"	d
+SPI_FLASH_CE	spi_register.h	40;"	d
+SPI_FLASH_MODE	spi_register.h	112;"	d
+SPI_FLASH_PP	spi_register.h	37;"	d
+SPI_FLASH_RDID	spi_register.h	34;"	d
+SPI_FLASH_RDSR	spi_register.h	35;"	d
+SPI_FLASH_READ	spi_register.h	31;"	d
+SPI_FLASH_RES	spi_register.h	41;"	d
+SPI_FLASH_SE	spi_register.h	38;"	d
+SPI_FLASH_WRDI	spi_register.h	33;"	d
+SPI_FLASH_WREN	spi_register.h	32;"	d
+SPI_FLASH_WRSR	spi_register.h	36;"	d
+SPI_FWRITE_DIO	spi_register.h	103;"	d
+SPI_FWRITE_DUAL	spi_register.h	105;"	d
+SPI_FWRITE_QIO	spi_register.h	102;"	d
+SPI_FWRITE_QUAD	spi_register.h	104;"	d
+SPI_IDLE_EDGE	spi_register.h	133;"	d
+SPI_INT_HOLD_ENA	spi_register.h	220;"	d
+SPI_INT_HOLD_ENA_S	spi_register.h	221;"	d
+SPI_MISO_DELAY_MODE	spi_register.h	77;"	d
+SPI_MISO_DELAY_MODE_S	spi_register.h	78;"	d
+SPI_MISO_DELAY_NUM	spi_register.h	75;"	d
+SPI_MISO_DELAY_NUM_S	spi_register.h	76;"	d
+SPI_MOSI_DELAY_MODE	spi_register.h	73;"	d
+SPI_MOSI_DELAY_MODE_S	spi_register.h	74;"	d
+SPI_MOSI_DELAY_NUM	spi_register.h	71;"	d
+SPI_MOSI_DELAY_NUM_S	spi_register.h	72;"	d
+SPI_PIN	spi_register.h	132;"	d
+SPI_QIO_MODE	spi_register.h	50;"	d
+SPI_QOUT_MODE	spi_register.h	52;"	d
+SPI_RD_BIT_ORDER	spi_register.h	49;"	d
+SPI_RD_BYTE_ORDER	spi_register.h	107;"	d
+SPI_RD_STATUS	spi_register.h	63;"	d
+SPI_REGISTER_H_INCLUDED	spi_register.h	26;"	d
+SPI_SIO	spi_register.h	101;"	d
+SPI_SLAVE	spi_register.h	138;"	d
+SPI_SLAVE1	spi_register.h	163;"	d
+SPI_SLAVE2	spi_register.h	180;"	d
+SPI_SLAVE3	spi_register.h	190;"	d
+SPI_SLAVE_MODE	spi_register.h	140;"	d
+SPI_SLV_BUF_BITLEN	spi_register.h	166;"	d
+SPI_SLV_BUF_BITLEN_S	spi_register.h	167;"	d
+SPI_SLV_CMD_DEFINE	spi_register.h	143;"	d
+SPI_SLV_RDBUF_CMD_VALUE	spi_register.h	197;"	d
+SPI_SLV_RDBUF_CMD_VALUE_S	spi_register.h	198;"	d
+SPI_SLV_RDBUF_DUMMY_CYCLELEN	spi_register.h	183;"	d
+SPI_SLV_RDBUF_DUMMY_CYCLELEN_S	spi_register.h	184;"	d
+SPI_SLV_RDBUF_DUMMY_EN	spi_register.h	176;"	d
+SPI_SLV_RDSTA_CMD_VALUE	spi_register.h	193;"	d
+SPI_SLV_RDSTA_CMD_VALUE_S	spi_register.h	194;"	d
+SPI_SLV_RDSTA_DUMMY_EN	spi_register.h	174;"	d
+SPI_SLV_RDSTR_DUMMY_CYCLELEN	spi_register.h	187;"	d
+SPI_SLV_RDSTR_DUMMY_CYCLELEN_S	spi_register.h	188;"	d
+SPI_SLV_RD_ADDR_BITLEN	spi_register.h	168;"	d
+SPI_SLV_RD_ADDR_BITLEN_S	spi_register.h	169;"	d
+SPI_SLV_RD_BUF_DONE	spi_register.h	161;"	d
+SPI_SLV_RD_BUF_DONE_EN	spi_register.h	150;"	d
+SPI_SLV_RD_STA_DONE	spi_register.h	159;"	d
+SPI_SLV_RD_STA_DONE_EN	spi_register.h	148;"	d
+SPI_SLV_STATUS_BITLEN	spi_register.h	164;"	d
+SPI_SLV_STATUS_BITLEN_S	spi_register.h	165;"	d
+SPI_SLV_WRBUF_CMD_VALUE	spi_register.h	195;"	d
+SPI_SLV_WRBUF_CMD_VALUE_S	spi_register.h	196;"	d
+SPI_SLV_WRBUF_DUMMY_CYCLELEN	spi_register.h	181;"	d
+SPI_SLV_WRBUF_DUMMY_CYCLELEN_S	spi_register.h	182;"	d
+SPI_SLV_WRBUF_DUMMY_EN	spi_register.h	175;"	d
+SPI_SLV_WRSTA_CMD_VALUE	spi_register.h	191;"	d
+SPI_SLV_WRSTA_CMD_VALUE_S	spi_register.h	192;"	d
+SPI_SLV_WRSTA_DUMMY_EN	spi_register.h	173;"	d
+SPI_SLV_WRSTR_DUMMY_CYCLELEN	spi_register.h	185;"	d
+SPI_SLV_WRSTR_DUMMY_CYCLELEN_S	spi_register.h	186;"	d
+SPI_SLV_WR_ADDR_BITLEN	spi_register.h	170;"	d
+SPI_SLV_WR_ADDR_BITLEN_S	spi_register.h	171;"	d
+SPI_SLV_WR_BUF_DONE	spi_register.h	160;"	d
+SPI_SLV_WR_BUF_DONE_EN	spi_register.h	149;"	d
+SPI_SLV_WR_RD_BUF_EN	spi_register.h	141;"	d
+SPI_SLV_WR_RD_STA_EN	spi_register.h	142;"	d
+SPI_SLV_WR_STA_DONE	spi_register.h	158;"	d
+SPI_SLV_WR_STA_DONE_EN	spi_register.h	147;"	d
+SPI_SYNC_RESET	spi_register.h	139;"	d
+SPI_TRANS_CNT	spi_register.h	144;"	d
+SPI_TRANS_CNT_S	spi_register.h	145;"	d
+SPI_TRANS_DONE	spi_register.h	157;"	d
+SPI_TRANS_DONE_EN	spi_register.h	146;"	d
+SPI_USER	spi_register.h	90;"	d
+SPI_USER1	spi_register.h	114;"	d
+SPI_USER2	spi_register.h	125;"	d
+SPI_USR	spi_register.h	43;"	d
+SPI_USR_ADDR	spi_register.h	92;"	d
+SPI_USR_ADDR_BITLEN	spi_register.h	115;"	d
+SPI_USR_ADDR_BITLEN_S	spi_register.h	116;"	d
+SPI_USR_COMMAND	spi_register.h	91;"	d
+SPI_USR_COMMAND_BITLEN	spi_register.h	126;"	d
+SPI_USR_COMMAND_BITLEN_S	spi_register.h	127;"	d
+SPI_USR_COMMAND_VALUE	spi_register.h	128;"	d
+SPI_USR_COMMAND_VALUE_S	spi_register.h	129;"	d
+SPI_USR_DUMMY	spi_register.h	93;"	d
+SPI_USR_DUMMY_CYCLELEN	spi_register.h	122;"	d
+SPI_USR_DUMMY_CYCLELEN_S	spi_register.h	123;"	d
+SPI_USR_MISO	spi_register.h	94;"	d
+SPI_USR_MISO_BITLEN	spi_register.h	119;"	d
+SPI_USR_MISO_BITLEN_S	spi_register.h	120;"	d
+SPI_USR_MISO_HIGHPART	spi_register.h	98;"	d
+SPI_USR_MOSI	spi_register.h	95;"	d
+SPI_USR_MOSI_BITLEN	spi_register.h	117;"	d
+SPI_USR_MOSI_BITLEN_S	spi_register.h	118;"	d
+SPI_USR_MOSI_HIGHPART	spi_register.h	97;"	d
+SPI_W0	spi_register.h	200;"	d
+SPI_W1	spi_register.h	201;"	d
+SPI_W10	spi_register.h	210;"	d
+SPI_W11	spi_register.h	211;"	d
+SPI_W12	spi_register.h	212;"	d
+SPI_W13	spi_register.h	213;"	d
+SPI_W14	spi_register.h	214;"	d
+SPI_W15	spi_register.h	215;"	d
+SPI_W2	spi_register.h	202;"	d
+SPI_W3	spi_register.h	203;"	d
+SPI_W4	spi_register.h	204;"	d
+SPI_W5	spi_register.h	205;"	d
+SPI_W6	spi_register.h	206;"	d
+SPI_W7	spi_register.h	207;"	d
+SPI_W8	spi_register.h	208;"	d
+SPI_W9	spi_register.h	209;"	d
+SPI_WR_BIT_ORDER	spi_register.h	48;"	d
+SPI_WR_BYTE_ORDER	spi_register.h	106;"	d
+SPI_WR_STATUS	spi_register.h	131;"	d
+SSPI_CS_HIGH	sspi.h	32;"	d
+SSPI_CS_LOW	sspi.h	33;"	d
+SSPI_CS_PIN	sspi.h	27;"	d
+SSPI_ERROR	sspi.h	23;"	d
+SSPI_HALF_CLOCK_TIME	sspi.h	41;"	d
+SSPI_MISO_PIN	sspi.h	30;"	d
+SSPI_MISO_READ	sspi.h	38;"	d
+SSPI_MOSI_HIGH	sspi.h	36;"	d
+SSPI_MOSI_LOW	sspi.h	37;"	d
+SSPI_MOSI_PIN	sspi.h	29;"	d
+SSPI_OK	sspi.h	24;"	d
+SSPI_SCK_HIGH	sspi.h	34;"	d
+SSPI_SCK_LOW	sspi.h	35;"	d
+SSPI_SCK_PIN	sspi.h	28;"	d
+SSPI_WAIT4BUSY_PERIOD	sspi.h	25;"	d
+SYSTEM_DEBUG	debug.h	32;"	d
+TAG	user_main.c	/^static const char* TAG = "app";$/;"	v	file:
+__DEBUG_H__	debug.h	2;"	d
+__MISC_H__	misc.h	2;"	d
+__SSPI_H_	sspi.h	2;"	d
+app_main	user_main.c	/^void app_main()$/;"	f
+c_mod	debug.c	/^const uint8_t c_mod[DSIZE][32] =$/;"	v
+catStrMISC	misc.c	/^void catStrMISC(uint8_t * dst, uint8_t * src)$/;"	f
+cmpStrMISC	misc.c	/^uint8_t cmpStrMISC(uint8_t * spat, uint8_t * stest)$/;"	f
+cmpStrWithLenMISC	misc.c	/^uint8_t cmpStrWithLenMISC(uint8_t * spat, uint16_t len_spat, uint8_t * stest, uint16_t len_stest)$/;"	f
+g_core_id	debug.c	/^volatile uint8_t g_core_id[17] = {0};$/;"	v
+g_debug_block_flag	debug.c	/^volatile uint8_t g_debug_block_flag = 1;$/;"	v
+g_logmsg_ccode	debug.c	/^volatile uint8_t g_logmsg_ccode = '5';$/;"	v
+getDNumMISC	misc.c	/^void getDNumMISC(uint8_t *dnum, uint32_t num)$/;"	f
+getStr4AddrMISC	misc.c	/^void getStr4AddrMISC(uint8_t * str, uint32_t addr)$/;"	f
+getStr4NumMISC	misc.c	/^void getStr4NumMISC(uint16_t type, uint32_t  * num, uint8_t * rstr)$/;"	f
+getStrMISC	misc.c	/^void getStrMISC(uint8_t * str, uint32_t  * num, uint8_t * r_str)$/;"	f
+initDEBUG	debug.c	/^void initDEBUG(char * str, uint8_t ccode, uint32_t baudrate, char * app)$/;"	f
+initSSPI	sspi.c	/^void initSSPI(void)$/;"	f
+initUART	debug.c	/^void initUART(uint32_t baudrate)$/;"	f
+printDEBUG	debug.c	/^void printDEBUG(uint16_t sid, char *str, ... )$/;"	f
+printUART	debug.c	/^void printUART(char *str, ... )$/;"	f
+print_task	user_main.c	/^static void print_task()$/;"	f	file:
+putDNumMISC	misc.c	/^void putDNumMISC(uint8_t *dnum, uint16_t *m, uint8_t *r_str)$/;"	f
+putcharUART	debug.c	/^void putcharUART(uint8_t data)$/;"	f
+rfid_task	user_main.c	/^static void rfid_task()$/;"	f	file:
+rxByteSSPI	sspi.c	/^uint8_t rxByteSSPI(void)$/;"	f
+rxSSPI	sspi.c	/^void rxSSPI(uint8_t * data, uint32_t size)$/;"	f
+spi_addr_tx8	mfrc522.c	/^uint8_t spi_addr_tx8(uint8_t addr_t,uint8_t val)$/;"	f
+spi_rx8	mfrc522.c	/^uint8_t spi_rx8(uint8_t addr)$/;"	f
+sprintUART	debug.c	/^void sprintUART(uint8_t * str)$/;"	f
+txByteSSPI	sspi.c	/^uint8_t txByteSSPI(uint8_t data)$/;"	f
+txSSPI	sspi.c	/^void txSSPI(uint8_t * txdata,uint8_t * rxdata, uint32_t size)$/;"	f
